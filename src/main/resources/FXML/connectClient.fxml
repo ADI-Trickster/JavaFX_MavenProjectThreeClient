@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="border-pane" fx:controller = "MyController"
+            fx:id = "borderPane">
+    <center>
+        <VBox alignment="CENTER">
+<!--            image here-->
+            <HBox alignment="CENTER">
+                <TextField fx:id="textF1" promptText="Ip address"/>
+                <TextField fx:id="textF2" promptText="Port Num(5555)"/>
+            </HBox>
+            <Button fx:id="connectToServer" text = "Connect to Server" onAction = "#connectToServerMethod"></Button>
+        </VBox>
+    </center>
+</BorderPane>

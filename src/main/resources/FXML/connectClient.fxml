@@ -13,14 +13,14 @@
 <?import javafx.scene.image.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="border-pane" fx:controller = "MyController"
-            fx:id = "borderPane">
+            fx:id = "borderPane" >
     <center>
         <VBox alignment="CENTER">
             <TextField text = "Welcome to 3 card Poker" editable="false" styleClass="title"/>
 <!--            image here-->
             <HBox alignment="CENTER" spacing="20">
-                <TextField fx:id="textF1" promptText="Ip address"/>
-                <TextField fx:id="textF2" promptText="Port Num(5555)"/>
+                <TextField fx:id="textFIP" promptText="Ip address"/>
+                <TextField fx:id="textFPortNum" promptText="Port Num(5555)"/>
             </HBox>
             <Button fx:id="connectToServer" text="Connect to Server" onAction="#connectToServerMethod"/>
         </VBox>

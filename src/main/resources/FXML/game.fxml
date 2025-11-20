@@ -14,8 +14,8 @@
         <VBox alignment="CENTER">
             <!--            image here-->
 <!--            <HBox alignment="CENTER">-->
-                <TextField fx:id="textF2" promptText="Ip addrgyfhjkess"/>
-                <TextField fx:id="textF3" promptText="Porcgbvhbjhk Num(5555)"/>
+                <TextField fx:id="textF2" promptText="testbox"/>
+<!--                <TextField fx:id="textF3" promptText="Port Num(5555)"/>-->
 <!--            </HBox>-->
 <!--            <Button fx:id="connectToServer" text = "Connect to Server" onAction = "#connectToServerMethod"></Button>-->
         </VBox>

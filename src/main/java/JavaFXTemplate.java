@@ -32,7 +32,7 @@ public class JavaFXTemplate extends Application {
             primaryStage.setTitle("Adrian R. Anaya Client");
 
             Scene s1 = new Scene(root, (double)800.0F, (double)800.0F);
-            s1.getStylesheets().add("styles.css");
+            s1.getStylesheets().add("Styles/connectStyles.css");
             primaryStage.setScene(s1);
             primaryStage.show();
         } catch (Exception e) {

@@ -7,7 +7,6 @@ import java.util.function.Consumer;
 
 public class Client extends Thread{
     Socket socketClient;
-
     ObjectOutputStream out;
     ObjectInputStream in;
 
@@ -39,7 +38,6 @@ public class Client extends Thread{
         try {
             out.writeObject(data);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

@@ -1,0 +1,20 @@
+.border-pane {
+    -fx-background-color: skyblue;
+}
+
+.button{
+    -fx-min-width: 100px;
+    -fx-min-height: 35px;
+    -fx-background-color: gold;
+}
+
+.textF{
+    -fx-border-color: clear;
+    -fx-min-width: 100px;
+    -fx-min-height: 35px;
+}
+
+.title{
+    -fx-control-inner-background: clear;
+}
+

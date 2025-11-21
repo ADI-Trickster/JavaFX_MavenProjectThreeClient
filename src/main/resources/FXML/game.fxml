@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="border-pane" fx:controller = "MyController"
-            fx:id = "borderPane">
+            fx:id="gameScreen">
     <center>
         <VBox alignment="CENTER">
             <!--            image here-->

@@ -35,3 +35,9 @@
     -fx-alignment: center;
     -fx-text-fill: white;
 }
+
+#start{
+    -fx-alignment: center;
+    -fx-min-width: 150px;
+    -fx-min-height: 50px;
+}

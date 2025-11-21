@@ -9,6 +9,7 @@
 <!--<?import javafx.scene.image.ImageView?>-->
 
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 
@@ -34,6 +35,11 @@
         </VBox>
     </center>
     <bottom>
-        <Button text="Start Game"/> <!-- onAction="#switchToGame" -->
+        <HBox alignment="CENTER">
+            <padding>
+                <Insets top="0" right="0" bottom="20" left="0"/>
+            </padding>
+            <Button fx:id="start" text="Start Game" disable="true"/>
+        </HBox>
     </bottom>
 </BorderPane>

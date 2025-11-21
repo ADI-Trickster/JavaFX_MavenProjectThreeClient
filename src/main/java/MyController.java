@@ -28,10 +28,20 @@ public class MyController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    @FXML
+    private Button connectToServer;
+
+    @FXML
+    private Button start;
+
+
+    @FXML
     public void connectToServerMethod() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
-        Parent root = loader.load();
-        MyController controller = loader.getController();
+        //
+        if c
+        start.setDisable(false);
+
+
 
 //        controller.textField1.clear();
 //        controller.textField2.setText("final string goes here");
@@ -39,12 +49,20 @@ public class MyController implements Initializable{
 //        controller.but1.setDisable(false);
 //        controller.but1.setText("button one");
 
-        borderPane.getScene().setRoot(root);
+
     }
 //    public void StopServerMethod(){
 //    }
 
+    public void startGame() throws IOException{
+        //
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
+        Parent root = loader.load();
+        MyController controller = loader.getController();
 
+
+        borderPane.getScene().setRoot(root);
+    }
 
 
 }

@@ -1,0 +1,43 @@
+@font-face {
+    font-family: "Sriracha";
+    src: url('/AddOn/Sriracha-Regular.ttf');
+}
+
+.border-pane {
+    -fx-background-image: url("/AddOn/background.jpg");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat;
+    -fx-font-family: "Sriracha";
+}
+
+#PIP{
+    -fx-padding: 10px;
+}
+
+#Design{
+    -fx-font-size: 35px;
+}
+
+.button{
+    -fx-min-width: 100px;
+    -fx-min-height: 35px;
+    -fx-background-color: gold;
+}
+
+.textF{
+    -fx-border-color: transparent;
+    -fx-min-width: 100px;
+    -fx-min-height: 35px;
+}
+
+.title{
+    -fx-background-color: transparent;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
+
+#start{
+    -fx-alignment: center;
+    -fx-min-width: 150px;
+    -fx-min-height: 50px;
+}

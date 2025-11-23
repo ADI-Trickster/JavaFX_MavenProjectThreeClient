@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.image.*?>
+
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="border-pane" fx:controller = "MyController"
+            fx:id="gameScreen">
+    <top>
+        <VBox>
+            <MenuBar>
+                <menus>
+                    <Menu text="Menu">
+                        <items>
+                            <MenuItem text="Fresh Look" onAction="#resetGame"/> <!--onAction="#handleOpenAction"-->
+                            <MenuItem text="New Look" onAction="#changeDesign"/> <!--onAction="#handleOpenAction"-->
+                            <MenuItem text="Exit" onAction="#exitGame"/> <!--onAction="#handleOpenAction"-->
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <HBox>
+                <TextArea maxHeight="100" maxWidth="100" text="Dealer's Hand"/>
+                <TextArea maxHeight="100" maxWidth="100" text="GAME INFO"/>
+<!--                <ImageView fx:id="card1" preserveRatio="true">-->
+<!--                    <image>-->
+<!--                        <Image url="/Cards"/>-->
+<!--                    </image>-->
+<!--                </ImageView>-->
+<!--                    get game info-->
+            </HBox>
+        </VBox>
+    </top>
+    <left>
+        <VBox>
+            <Button fx:id="playHand" text="Play cards" onAction="#playHand"/>
+            <Button fx:id="fold" text="Fold cards" onAction="#fold"/>
+            <Button fx:id="ante" text="Ante" onAction="#ante"/>
+            <Button fx:id="pairPlus" text="Pair Plus" onAction="#pairPlus"/>
+        </VBox>
+    </left>
+    <right>
+        <TextArea text="Total Winnings" maxHeight="100" maxWidth="100"/>
+    </right>
+    <bottom>
+        <HBox>
+            <TextArea maxHeight="100" maxWidth="100" text="Player's Hand"/>
+            <!--                <ImageView fx:id="card1" preserveRatio="true">-->
+            <!--                    <image>-->
+            <!--                        <Image url="/Cards"/>-->
+            <!--                    </image>-->
+            <!--                </ImageView>-->
+        </HBox>
+    </bottom>
+</BorderPane>

@@ -69,6 +69,8 @@ public class MyController implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
         Parent root = loader.load();
         MyController controller = loader.getController();
+        controller.clientConnection = clientConnection;
+//        controller.clientConnection.send("this is a test connection");
         borderPane.getScene().setRoot(root);
     }
 //    public void StopServerMethod(){

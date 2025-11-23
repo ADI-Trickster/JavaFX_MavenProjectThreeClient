@@ -19,7 +19,7 @@
             <TextField text = "Welcome to 3 card Poker" editable="false" styleClass="title"/>
 <!--            image here-->
             <HBox alignment="CENTER" spacing="20">
-                <TextField fx:id="textFIP" promptText="Ip address"/>
+                <TextField fx:id="textFIP" promptText="Ip address(127.0.0.1)"/>
                 <TextField fx:id="textFPortNum" promptText="Port Num(5555)"/>
             </HBox>
             <Button fx:id="connectToServer" text="Connect to Server" onAction="#connectToServerMethod"/>

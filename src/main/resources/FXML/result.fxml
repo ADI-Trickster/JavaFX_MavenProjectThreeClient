@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="border-pane" fx:controller = "MyController"
+            fx:id="resultScreen">
+    <top>
+<!--        win/lose-->
+<!--        if winnings > starting amount = win else lose-->
+        <TextField text="YOU WIN" editable="false"/>
+    </top>
+    <bottom>
+        <HBox>
+            <Button fx:id="playAgain" text="Play Again" onAction="#playAgain"/>
+            <Button fx:id="exitGame" text="Exit Game" onAction="#exitGame"/>
+        </HBox>
+    </bottom>
+    <center>
+        <VBox>
+            <Label text="Earnings"/>
+<!--            placeholder for totalWinnings-->
+        </VBox>
+    </center>
+</BorderPane>

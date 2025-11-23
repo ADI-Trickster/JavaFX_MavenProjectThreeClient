@@ -9,7 +9,7 @@
 
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="border-pane" fx:controller = "MyController"
-            fx:id="gameScreen">
+            fx:id="gamePane">
     <top>
         <VBox>
             <MenuBar>

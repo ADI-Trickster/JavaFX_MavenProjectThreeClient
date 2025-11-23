@@ -7,7 +7,7 @@
 <?import javafx.scene.image.*?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml" styleClass="border-pane" fx:controller = "MyController"
-            fx:id="borderPane">
+            fx:id="welcomePane">
     <top>
         <VBox fx:id="PIP" alignment="TOP_LEFT" spacing="5">
             <TextField fx:id="textF1" promptText="Ip address" maxWidth="200"/>

@@ -25,13 +25,13 @@
 }
 
 .textF{
-    -fx-border-color: clear;
+    -fx-border-color: transparent;
     -fx-min-width: 100px;
     -fx-min-height: 35px;
 }
 
 .title{
-    -fx-background-color: clear;
+    -fx-background-color: transparent;
     -fx-alignment: center;
     -fx-text-fill: white;
 }

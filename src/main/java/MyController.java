@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Alert;
 //import javafx.scene.image.Image;
 
 public class MyController implements Initializable{
@@ -34,29 +35,34 @@ public class MyController implements Initializable{
     @FXML
     private Button start;
 
+    boolean connectionAttempt = true;
 
     @FXML
     public void connectToServerMethod() throws IOException{
-        //
-        if c
-        start.setDisable(false);
-
-
-
+        if(connectionAttempt){
+            start.setDisable(false);
+            connectToServer.setText("Connected to server");
+            connectToServer.setDisable(true);
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Connection Failed");
+            alert.setHeaderText("Connection Failed");
+            alert.setContentText("Try again");
+            alert.showAndWait();
+        }
 //        controller.textField1.clear();
 //        controller.textField2.setText("final string goes here");
 //        controller.textField2.clear();
 //        controller.but1.setDisable(false);
 //        controller.but1.setText("button one");
-
-
     }
 //    public void StopServerMethod(){
 //    }
-
+    @FXML
     public void startGame() throws IOException{
-        //
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/game.fxml"));
         Parent root = loader.load();
         MyController controller = loader.getController();
 
@@ -64,5 +70,38 @@ public class MyController implements Initializable{
         borderPane.getScene().setRoot(root);
     }
 
+    @FXML
+    public void playHand() throws IOException{
+        System.out.println("Playing Hand");
+    }
 
+    @FXML
+    public void fold() throws IOException{
+        System.out.println("Folding");
+    }
+
+    @FXML
+    public void ante() throws IOException{
+        System.out.println("Ante");
+    }
+
+    @FXML
+    public void pairPlus() throws IOException{
+        System.out.println("Pair plus");
+    }
+
+    //MENU
+    @FXML
+    public void resetGame() throws IOException{
+        System.out.println("Resetting game");
+    }
+    @FXML
+    public void changeDesign() throws IOException{
+        System.out.println("Changing Design");
+    }
+    @FXML
+    public void exitGame() throws IOException{
+        Platform.exit();
+    }
+    //END OF MENU
 }

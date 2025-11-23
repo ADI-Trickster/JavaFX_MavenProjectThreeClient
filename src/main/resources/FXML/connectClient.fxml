@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--<?import javafx.scene.layout.VBox?>-->
-<!--<?import javafx.scene.control.Button?>-->
-<!--<?import javafx.scene.control.TextField?>-->
-<!--<?import javafx.scene.control.TextArea?>-->
-<!--<?import javafx.scene.layout.BorderPane?>-->
-<!--<?import javafx.scene.layout.HBox?>-->
-<!--<?import javafx.scene.image.ImageView?>-->
 
 <?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
@@ -31,7 +24,7 @@
                     <Image url="/AddOn/logo.png"/>
                 </image>
             </ImageView>
-            <TextField text = "Welcome to 3 card Poker" editable="false" styleClass="title" maxWidth="600" />
+            <TextField text = "Welcome to 3 card Poker" editable="false" styleClass="title" maxWidth="600" focusTraversable="false"/>
         </VBox>
     </center>
     <bottom>
@@ -39,7 +32,7 @@
             <padding>
                 <Insets top="0" right="0" bottom="20" left="0"/>
             </padding>
-            <Button fx:id="start" text="Start Game" disable="true"/>
+            <Button fx:id="start" text="Start Game" disable="true" onAction="#startGame"/>
         </HBox>
     </bottom>
 </BorderPane>

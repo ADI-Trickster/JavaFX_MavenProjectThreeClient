@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 //import javafx.scene.image.Image;
 
-
 public class MyController implements Initializable{
     @FXML
     BorderPane welcomePane;
@@ -223,7 +222,6 @@ public class MyController implements Initializable{
 
         playHand.setDisable(true);
         fold.setDisable(true);
-
     }
 
 

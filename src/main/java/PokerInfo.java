@@ -49,7 +49,6 @@ class PokerInfo implements Serializable {
     public int getPairPlusBet() { return pairPlusBet; }
     public void setPairPlusBet(int pairPlusBet) { this.pairPlusBet = pairPlusBet; }
 
-
     public void addCardToHand(Cards card) {
         playerCards.add(card);
     }
@@ -67,4 +66,7 @@ class PokerInfo implements Serializable {
 
     public String getMessage() { return message; }
     public void setMessage(String message) { this.message = message; }
+
+    public String getGameState() { return gameState; }
+    public void setGameState(String gameState) { this.gameState = gameState; }
 }

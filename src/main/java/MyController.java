@@ -147,6 +147,10 @@ public class MyController implements Initializable{
                 ante.setText("Ante must be 5-25.");
                 return;
             }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
+            Parent root = loader.load();
+            MyController controller = loader.getController();
+//            controller.
 
             this.anteBet = anteBet;
 

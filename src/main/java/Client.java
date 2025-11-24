@@ -1,4 +1,6 @@
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -70,7 +72,11 @@ public class Client extends Thread{
         }
     }
 
-    public void manageClientGame(PokerInfo pokerInfo){
+    public void manageClientGame(PokerInfo pokerInfo) throws IOException {
           callback.accept(pokerInfo);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
+        Parent root = loader.load();
+        MyController controller = loader.getController();
+        controller.pokerInfo = pokerInfo;
     }
 }

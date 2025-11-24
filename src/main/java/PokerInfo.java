@@ -14,6 +14,7 @@ class PokerInfo implements Serializable {
     private int gameOver;
     private String gameState;
     private Deck deck;
+    private int WinnerOfGame;
 
     private String message; // say if player won or lost and how much
 
@@ -91,6 +92,13 @@ class PokerInfo implements Serializable {
     }
     public void addToTotalWinnings(int totalWinnings) {
         this.totalWinnings += totalWinnings;
+    }
+
+    public int getWinnerOfGame() {
+        return WinnerOfGame;
+    }
+    public void setWinnerOfGame(int WinnerOfGame) {
+        this.WinnerOfGame = WinnerOfGame;
     }
 
     public String getMessage() { return message; }

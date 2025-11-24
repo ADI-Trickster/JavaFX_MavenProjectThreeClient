@@ -46,7 +46,6 @@ public class MyController implements Initializable{
     private int anteBet = 0;
     private int PPBet = 0;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -87,15 +86,11 @@ public class MyController implements Initializable{
                 });
             }, port
             );
-
-//            System.out.println("client Connectioned");
             controller.clientConnection = clientConnection;
             controller.clientConnection.start();
-//            System.out.println("client Connectioned 2");
             controller.startGameButton.setDisable(false);
             controller.connectToServer.setText("Connected to server");
             controller.connectToServer.setDisable(true);
-//            System.out.println("client Connectioned 3");
             welcomePane.getScene().setRoot(root);
         }
         else{

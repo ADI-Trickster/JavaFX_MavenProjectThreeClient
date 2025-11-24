@@ -37,19 +37,10 @@ public class Client extends Thread{
             try {
 //                String message = in.readObject().toString();
 //                callback.accept(message); //really accept(platform.runlater(....message))
-                Object obj = in.readObject();
-//                PokerInfo pokerInfo = (PokerInfo) in.readObject();
-                if(obj instanceof PokerInfo) {
-                    PokerInfo pokerInfo = (PokerInfo) obj;
+//                PokerInfo obj = (PokerInfo) in.readObject();
+                PokerInfo pokerInfo = (PokerInfo) in.readObject();
+//                  PokerInfo pokerInfo = (PokerInfo) obj;
                     manageClientGame(pokerInfo);
-                }else{
-                    String message = (String)obj;
-                    if(message.equals("Sever Stop")){
-                        callback.accept(message);
-                        running = false;
-                    }
-                }
-
             }
             catch(Exception e) {
 

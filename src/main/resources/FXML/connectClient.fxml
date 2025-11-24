@@ -10,8 +10,8 @@
             fx:id="welcomePane">
     <top>
         <VBox fx:id="PIP" alignment="TOP_LEFT" spacing="5">
-            <TextField fx:id="textF1" promptText="Ip address" maxWidth="200"/>
-            <TextField fx:id="textF2" promptText="Port Num(5555)" maxWidth="200"/>
+            <TextField fx:id="textFIP" promptText="Ip address(127.0.0.1)" maxWidth="200"/>
+            <TextField fx:id="textFPortNum" promptText="Port Num(5555)" maxWidth="200"/>
             <VBox alignment="CENTER" maxWidth="200">
                 <Button fx:id="connectToServer" text="Connect to Server" onAction="#connectToServerMethod"/>
             </VBox>

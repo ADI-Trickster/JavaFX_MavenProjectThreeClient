@@ -1,7 +1,3 @@
-import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.SequentialTransition;
 import javafx.application.Application;
 
 import javafx.fxml.FXMLLoader;
@@ -31,7 +27,7 @@ public class JavaFXTemplate extends Application {
             primaryStage.setTitle("Adrian R. Anaya Client");
 
             Scene s1 = new Scene(root, (double)800.0F, (double)800.0F);
-            s1.getStylesheets().add("Styles/connectStyles.css");
+            s1.getStylesheets().add("Styles/style0.css");
             primaryStage.setScene(s1);
             primaryStage.setResizable(false);
             primaryStage.show();

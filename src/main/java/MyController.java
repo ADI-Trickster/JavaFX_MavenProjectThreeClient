@@ -46,6 +46,7 @@ public class MyController implements Initializable{
 
     private int anteBet = 0;
     private int PPBet = 0;
+    private int change;
 
 
     @Override
@@ -191,13 +192,13 @@ public class MyController implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
         Parent root = loader.load();
 
-        // 2. Get the controller of the new screen
+
         MyController controller = loader.getController();
 
-        // 3. CRITICAL: Pass the existing client connection to the new controller
+
         controller.clientConnection = this.clientConnection;
 
-        // 4. Reset the internal bets of the new controller instance (optional, but clean)
+
         controller.anteBet = 0;
         controller.PPBet = 0;
 
@@ -228,9 +229,24 @@ public class MyController implements Initializable{
 
     @FXML
     public void changeDesign() throws IOException{
+        this.change++;
+        if(this.change > 2){
+            this.change = 0;
+        }
         System.out.println("Changing Design");
+        if (gamePane != null && gamePane.getScene() != null) {
+            // Get the current Scene's stylesheet list and clear it
+            gamePane.getScene().getStylesheets().clear();
 
+            String cssFile = String.format("/Styles/style%d.css" , this.change);
+            String css = getClass().getResource(cssFile).toExternalForm();
+            gamePane.getScene().getStylesheets().add(css);
+        }
+
+        // 4. Switch the scene root to display the results screen
+//        gamePane.getScene().setRoot(root);
     }
+
     @FXML
     public void exitGame() throws IOException{
         Platform.exit();

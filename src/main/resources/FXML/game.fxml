@@ -44,11 +44,11 @@
         </VBox>
     </left>
     <right>
-        <TextArea text="Total Winnings" maxHeight="100" maxWidth="100"/>
+        <TextArea text="Total Winnings" maxHeight="100" maxWidth="100" editable="false"/>
     </right>
     <bottom>
         <HBox>
-            <TextArea maxHeight="100" maxWidth="100" text="Player's Hand"/>
+            <TextArea maxHeight="100" maxWidth="100" text="Player's Hand" editable="false"/>
             <!--                <ImageView fx:id="card1" preserveRatio="true">-->
             <!--                    <image>-->
             <!--                        <Image url="/Cards"/>-->

@@ -7,11 +7,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.control.Alert;
 //import javafx.scene.image.Image;
+
 
 public class MyController implements Initializable{
     @FXML
@@ -26,6 +25,26 @@ public class MyController implements Initializable{
     TextField textFIP;
     @FXML
     TextField textFPortNum;
+    @FXML
+    TextField ante;
+    @FXML
+    TextField pairPlus;
+    @FXML
+    Button playHand;
+    @FXML
+    Button fold;
+    @FXML
+    TextArea Dealer;
+    @FXML
+    TextArea gameInfo;
+    @FXML
+    TextArea player;
+    @FXML
+    TextArea rewards;
+
+    private int anteBet = 0;
+    private int PPBet = 0;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -122,18 +141,52 @@ public class MyController implements Initializable{
     }
 
     @FXML
-    public void ante() throws IOException{
-        System.out.println("Ante");
+    public void handleAnteBet() throws IOException {
+        String text = ante.getText();
+        try {
+            int anteBet = Integer.parseInt(text);
+
+            if (anteBet < 5 || anteBet > 25) {
+                ante.setText("Ante must be 5-25.");
+                return;
+            }
+
+            this.anteBet = anteBet;
+
+
+            // Enable play/fold options after a valid bet is placed
+            playHand.setDisable(false);
+            fold.setDisable(false);
+
+        } catch (NumberFormatException e) {
+            ante.setText("5");
+        }
     }
 
     @FXML
-    public void pairPlus() throws IOException{
-        System.out.println("Pair plus");
+    public void handlePairPlusBet() throws IOException {
+        String text = pairPlus.getText();
+        try {
+            int ppBet = Integer.parseInt(text);
+
+            if ((ppBet < 5 || ppBet > 25) && ppBet != 0) {
+                pairPlus.setText("Pair Plus bet: 0 or 5-25");
+                return;
+            }
+
+            this.PPBet = ppBet;
+            System.out.println("Placed Pair Plus bet: $" + ppBet);
+
+        } catch (NumberFormatException e) {
+            pairPlus.setText("Invalid PP amount. Enter a number.");
+            pairPlus.setText("0");
+        }
     }
 
     @FXML
     public void playAgain() throws IOException{
         System.out.println("Playing Again");
+
     }
 
 
@@ -141,10 +194,21 @@ public class MyController implements Initializable{
     @FXML
     public void resetGame() throws IOException{
         System.out.println("Resetting game");
+        Dealer.setText("Dealer's Hand");
+        player.setText("Player's Hand");
+
+        gameInfo.setText("New Game Started.");
+        rewards.setText("$0");
+
+        playHand.setDisable(true);
+        fold.setDisable(true);
+
     }
+
     @FXML
     public void changeDesign() throws IOException{
         System.out.println("Changing Design");
+
     }
     @FXML
     public void exitGame() throws IOException{

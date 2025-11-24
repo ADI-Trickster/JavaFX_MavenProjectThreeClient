@@ -24,8 +24,8 @@
                 </menus>
             </MenuBar>
             <HBox>
-                <TextArea maxHeight="100" maxWidth="100" text="Dealer's Hand" editable="false"/>
-                <TextArea maxHeight="100" maxWidth="100" text="GAME INFO" editable="false"/>
+                <TextArea fx:id="Dealer" maxHeight="100" maxWidth="100" text="Dealer's Hand" editable="false"/>
+                <TextArea fx:id="gameInfo" maxHeight="100" maxWidth="100" text="GAME INFO" editable="false"/>
 <!--                <ImageView fx:id="card1" preserveRatio="true">-->
 <!--                    <image>-->
 <!--                        <Image url="/Cards"/>-->
@@ -39,16 +39,22 @@
         <VBox>
             <Button fx:id="playHand" text="Play cards" onAction="#playHand"/>
             <Button fx:id="fold" text="Fold cards" onAction="#fold"/>
-            <Button fx:id="ante" text="Ante" onAction="#ante"/>
-            <Button fx:id="pairPlus" text="Pair Plus" onAction="#pairPlus"/>
+            <HBox fx:id="anteBox">
+                <Label text="Ante"/>
+                <TextField fx:id="ante" text="5" onAction="#handleAnteBet"/>
+            </HBox>
+            <HBox fx:id="ppBox">
+                <Label text="pairPlus"/>
+                <TextField fx:id="pairPlus" text="0" onAction="#handlePairPlusBet"/>
+            </HBox>
         </VBox>
     </left>
     <right>
-        <TextArea text="Total Winnings" maxHeight="100" maxWidth="100" editable="false"/>
+        <TextArea fx:id="rewards" text="Total Winnings" maxHeight="100" maxWidth="100" editable="false"/>
     </right>
     <bottom>
         <HBox>
-            <TextArea maxHeight="100" maxWidth="100" text="Player's Hand" editable="false"/>
+            <TextArea fx:id="player" maxHeight="100" maxWidth="100" text="Player's Hand" editable="false"/>
             <!--                <ImageView fx:id="card1" preserveRatio="true">-->
             <!--                    <image>-->
             <!--                        <Image url="/Cards"/>-->
@@ -56,4 +62,7 @@
             <!--                </ImageView>-->
         </HBox>
     </bottom>
+<!--    <center>-->
+<!--        -->
+<!--    </center>-->
 </BorderPane>

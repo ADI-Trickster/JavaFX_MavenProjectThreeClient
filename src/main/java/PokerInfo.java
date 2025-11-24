@@ -1,4 +1,3 @@
-//import javax.smartcardio.Card;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -7,18 +6,28 @@ class PokerInfo implements Serializable {
     private ArrayList<Cards> playerCards;
     private ArrayList<Cards> dealerCards;
     private int potAmount;
-    private int playerBet;
-    private int bigBlind;
+    private int anteBet;
     private int pairPlusBet;
     private boolean playerFolded;
+    private boolean dealerQualifies;
     private int totalWinnings;
     private int gameOver;
+    private String gameState;
 
-    private String message;
+    private String message; // say if player won or lost and how much
 
     public PokerInfo(){
         playerCards = new ArrayList<>();
         dealerCards = new ArrayList<>();
+        gameState = "";
+    }
+
+    public boolean isHighQueenUp() {
+        return dealerQualifies;
+    }
+
+    public void highQueenUp(boolean dealerQualifies) {
+        this.dealerQualifies = dealerQualifies;
     }
 
     public ArrayList<Cards> getPlayerHand() { return playerCards; }
@@ -31,14 +40,15 @@ class PokerInfo implements Serializable {
         this.dealerCards = dealerHand;
     }
 
-    public int getPlayerBet() { return playerBet; }
-    public void setPlayerBet(int playerBet) { this.playerBet = playerBet; }
+    public int getAnteBet() { return anteBet; }
+    public void setAnteBet(int anteBet) { this.anteBet = anteBet; }
 
     public boolean isPlayerFolded() { return playerFolded; }
     public void setPlayerFolded(boolean playerFolded) { this.playerFolded = playerFolded; }
 
-    public int getBigBlind() { return bigBlind; }
-    public void setBigBlind(int bigBlind) { this.bigBlind = bigBlind; }
+    public int getPairPlusBet() { return pairPlusBet; }
+    public void setPairPlusBet(int pairPlusBet) { this.pairPlusBet = pairPlusBet; }
+
 
     public void addCardToHand(Cards card) {
         playerCards.add(card);
@@ -57,5 +67,4 @@ class PokerInfo implements Serializable {
 
     public String getMessage() { return message; }
     public void setMessage(String message) { this.message = message; }
-
 }

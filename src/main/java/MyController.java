@@ -46,6 +46,10 @@ public class MyController implements Initializable{
     TextArea player;
     @FXML
     TextArea rewards;
+    @FXML
+    TextField WinningTF;
+    @FXML
+    TextField topWin;
 
     private int anteBet = 0;
     private int PPBet = 0;
@@ -122,7 +126,21 @@ public class MyController implements Initializable{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/result.fxml"));
         Parent root = loader.load();
         MyController controller = loader.getController();
-        gamePane.getScene().setRoot(root);
+        controller.pokerInfo = this.pokerInfo;
+        int winnings = controller.pokerInfo.getTotalWinnings();
+        int decideWinner = controller.pokerInfo.getWinnerOfGame();
+        if(decideWinner == 1){
+            controller.topWin.setText("Winner");
+//            controller.WinningTF.setText("Winnings"+Integer.toString(winnings));
+        }else if(decideWinner == -1){
+            controller.topWin.setText("Loser");
+//            controller.WinningTF.setText("Lost"+Integer.toString(winnings));
+        }else{
+            controller.topWin.setText("No Winner");
+//            controller.WinningTF.setText("Tie");
+        }
+
+        resultScreen.getScene().setRoot(root);
     }
 
     @FXML
@@ -148,13 +166,15 @@ public class MyController implements Initializable{
             }
 
             this.anteBet = anteBet;
+            pokerInfo.setAnteBet(anteBet);
+            pokerInfo.setGameState("draw");
+            // 1. NEW DECK
+            pokerInfo.getNewDeck();
+            clientConnection.send(pokerInfo);
 
             // Enable play/fold buttons
             playHand.setDisable(false);
             fold.setDisable(false);
-
-            // 1. NEW DECK
-            pokerInfo.getNewDeck();
 
             // 2. DEAL 3 CARDS TO PLAYER
             ArrayList<Cards> newHand = pokerInfo.getHand();   // returns 3 cards

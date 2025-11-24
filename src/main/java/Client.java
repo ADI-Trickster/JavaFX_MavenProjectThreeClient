@@ -1,4 +1,6 @@
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -37,19 +39,10 @@ public class Client extends Thread{
             try {
 //                String message = in.readObject().toString();
 //                callback.accept(message); //really accept(platform.runlater(....message))
-                Object obj = in.readObject();
-//                PokerInfo pokerInfo = (PokerInfo) in.readObject();
-                if(obj instanceof PokerInfo) {
-                    PokerInfo pokerInfo = (PokerInfo) obj;
+//                PokerInfo obj = (PokerInfo) in.readObject();
+                PokerInfo pokerInfo = (PokerInfo) in.readObject();
+//                  PokerInfo pokerInfo = (PokerInfo) obj;
                     manageClientGame(pokerInfo);
-                }else{
-                    String message = (String)obj;
-                    if(message.equals("Sever Stop")){
-                        callback.accept(message);
-                        running = false;
-                    }
-                }
-
             }
             catch(Exception e) {
 
@@ -79,7 +72,11 @@ public class Client extends Thread{
         }
     }
 
-    public void manageClientGame(PokerInfo pokerInfo){
+    public void manageClientGame(PokerInfo pokerInfo) throws IOException {
           callback.accept(pokerInfo);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
+        Parent root = loader.load();
+        MyController controller = loader.getController();
+        controller.pokerInfo = pokerInfo;
     }
 }

@@ -48,7 +48,6 @@ public class MyController implements Initializable{
     private int PPBet = 0;
     private int change;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
@@ -89,15 +88,11 @@ public class MyController implements Initializable{
                 });
             }, port
             );
-
-//            System.out.println("client Connectioned");
             controller.clientConnection = clientConnection;
             controller.clientConnection.start();
-//            System.out.println("client Connectioned 2");
             controller.startGameButton.setDisable(false);
             controller.connectToServer.setText("Connected to server");
             controller.connectToServer.setDisable(true);
-//            System.out.println("client Connectioned 3");
             welcomePane.getScene().setRoot(root);
         }
         else{
@@ -153,6 +148,10 @@ public class MyController implements Initializable{
                 ante.setText("Ante must be 5-25.");
                 return;
             }
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
+            Parent root = loader.load();
+            MyController controller = loader.getController();
+//            controller.
 
             this.anteBet = anteBet;
 

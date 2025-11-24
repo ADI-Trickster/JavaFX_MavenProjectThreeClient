@@ -18,6 +18,8 @@ public class MyController implements Initializable{
     @FXML
     BorderPane gamePane;
     @FXML
+    BorderPane resultScreen;
+    @FXML
     public Button connectToServer;
     @FXML
     public Button startGameButton;
@@ -186,7 +188,25 @@ public class MyController implements Initializable{
     @FXML
     public void playAgain() throws IOException{
         System.out.println("Playing Again");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
+        Parent root = loader.load();
 
+        // 2. Get the controller of the new screen
+        MyController controller = loader.getController();
+
+        // 3. CRITICAL: Pass the existing client connection to the new controller
+        controller.clientConnection = this.clientConnection;
+
+        // 4. Reset the internal bets of the new controller instance (optional, but clean)
+        controller.anteBet = 0;
+        controller.PPBet = 0;
+
+        if (resultScreen != null && resultScreen.getScene() != null) {
+            resultScreen.getScene().setRoot(root);
+            System.out.println("Back to game screen.");
+        } else {
+            System.err.println("FAILED SWITCH");
+        }
     }
 
 
@@ -204,6 +224,7 @@ public class MyController implements Initializable{
         fold.setDisable(true);
 
     }
+
 
     @FXML
     public void changeDesign() throws IOException{

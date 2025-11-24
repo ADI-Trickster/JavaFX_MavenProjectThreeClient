@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 //import javafx.scene.image.Image;
 
 public class MyController implements Initializable{
+    PokerInfo pokerInfo = new PokerInfo();
     @FXML
     BorderPane welcomePane;
     @FXML
@@ -156,9 +157,13 @@ public class MyController implements Initializable{
             this.anteBet = anteBet;
 
 
+
+
             // Enable play/fold options after a valid bet is placed
+            PokerInfo.getPlayerHand();
             playHand.setDisable(false);
             fold.setDisable(false);
+
 
         } catch (NumberFormatException e) {
             ante.setText("5");

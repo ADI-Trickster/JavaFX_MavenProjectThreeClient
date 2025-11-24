@@ -10,6 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 //import javafx.scene.image.Image;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MyController implements Initializable{
     PokerInfo pokerInfo = new PokerInfo();
@@ -56,24 +59,23 @@ public class MyController implements Initializable{
     Client clientConnection;
 
     @FXML
-    public void connectToServerMethod() throws IOException{
-        if(connectionAttempt){
+    public void connectToServerMethod() throws IOException {
+        if (connectionAttempt) {
             String IP = textFIP.getText();
             String portStr = textFPortNum.getText();
-            if(IP.isEmpty() || portStr.isEmpty()){
+            if (IP.isEmpty() || portStr.isEmpty()) {
                 System.out.println("NO port or IP");
                 return;
             }
 
             int port;
-            try{
+            try {
                 port = Integer.parseInt(portStr);
-                if(port < 1 || port > 65535){
+                if (port < 1 || port > 65535) {
                     System.out.println("Invalid port");
                     return;
                 }
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Invalid port or IP");
                 return;
             }
@@ -82,8 +84,8 @@ public class MyController implements Initializable{
             FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/connectClient.fxml"));
             Parent root = loader.load();
             MyController controller = loader.getController();
-            clientConnection = new Client(data ->{
-                Platform.runLater(()->{
+            clientConnection = new Client(data -> {
+                Platform.runLater(() -> {
                     textFPortNum.getText();
                 });
             }, port
@@ -94,22 +96,17 @@ public class MyController implements Initializable{
             controller.connectToServer.setText("Connected to server");
             controller.connectToServer.setDisable(true);
             welcomePane.getScene().setRoot(root);
-        }
-        else{
+        } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Connection Failed");
             alert.setHeaderText("Connection Failed");
             alert.setContentText("Try again");
             alert.showAndWait();
         }
-//        controller.textField1.clear();
-//        controller.textField2.setText("final string goes here");
-//        controller.textField2.clear();
-//        controller.but1.setDisable(false);
-//        controller.but1.setText("button one");
     }
-//    public void StopServerMethod(){
-//    }
+
+
+
     @FXML
     public void startGame() throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
@@ -141,6 +138,7 @@ public class MyController implements Initializable{
     @FXML
     public void handleAnteBet() throws IOException {
         String text = ante.getText();
+
         try {
             int anteBet = Integer.parseInt(text);
 
@@ -148,26 +146,50 @@ public class MyController implements Initializable{
                 ante.setText("Ante must be 5-25.");
                 return;
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
-            Parent root = loader.load();
-            MyController controller = loader.getController();
-//            controller.
 
             this.anteBet = anteBet;
 
-
-
-
-            // Enable play/fold options after a valid bet is placed
-            PokerInfo.getPlayerHand();
+            // Enable play/fold buttons
             playHand.setDisable(false);
             fold.setDisable(false);
 
+            // 1. NEW DECK
+            pokerInfo.getNewDeck();
+
+            // 2. DEAL 3 CARDS TO PLAYER
+            ArrayList<Cards> newHand = pokerInfo.getHand();   // returns 3 cards
+            pokerInfo.setPlayerHand(newHand);
+
+            // 3. DISPLAY HAND
+            StringBuilder sb = new StringBuilder();
+            String displayVal;
+            for (Cards c : newHand) {
+                switch (c.getValue()) {
+                    case 11:
+                        displayVal = "Jack";
+                        break;
+                    case 12:
+                        displayVal = "Queen";
+                        break;
+                    case 13:
+                        displayVal = "King";
+                        break;
+                    case 14:
+                        displayVal = "Ace";
+                        break;
+                    default: displayVal = String.valueOf(c.getValue());
+                }
+
+                sb.append(displayVal).append(" of ").append(c.getSuit()).append("\n");
+            }
+
+            player.setText(sb.toString());
 
         } catch (NumberFormatException e) {
             ante.setText("5");
         }
     }
+
 
     @FXML
     public void handlePairPlusBet() throws IOException {

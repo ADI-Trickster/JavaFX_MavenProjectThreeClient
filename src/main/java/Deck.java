@@ -10,13 +10,13 @@ public class Deck extends ArrayList<Cards> {
     // Clears all cards and creates a new deck of 52 cards in random order.
     public void newDeck() {
         this.clear();
-        char[] suits = {'H','D','S','C'};
-        for (char suit : suits) {//adds each suit
+        String[] suits = {"Hearts","Diamonds","Spades","Clubs"};
+        for (String suit : suits) {//adds each suit
             for (int value = 2; value < 15; value++) {// adds each cards from suit to deck
                 this.add(new Cards(suit, value));
             }
         }
-        Collections.shuffle(this); // shuffles cards for the game
+        shuffleDeck(); // shuffles cards for the game
     }
     //add shuffle
 

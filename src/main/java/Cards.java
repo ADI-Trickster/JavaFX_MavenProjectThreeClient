@@ -1,16 +1,16 @@
 import java.io.Serializable;
 
 public class Cards implements Serializable {
-    private char suit;
+    private String suit;
     private int value;
     private String cardImage;
 
-    public Cards(char suit, int value) {
+    public Cards(String suit, int value) {
         this.suit = suit;
         this.value = value;
     }
 
-    public char getSuit() {
+    public String getSuit() {
         return suit;
     }
 

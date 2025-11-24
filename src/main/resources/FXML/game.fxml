@@ -24,7 +24,7 @@
                 </menus>
             </MenuBar>
             <HBox>
-                <TextArea fx:id="Dealer" maxHeight="100" maxWidth="100" text="Dealer's Hand" editable="false"/>
+                <TextArea fx:id="Dealer" maxHeight="100" maxWidth="150" text="Dealer's Hand" editable="false"/>
                 <TextArea fx:id="gameInfo" maxHeight="100" maxWidth="100" text="GAME INFO" editable="false"/>
 <!--                <ImageView fx:id="card1" preserveRatio="true">-->
 <!--                    <image>-->
@@ -54,7 +54,7 @@
     </right>
     <bottom>
         <HBox>
-            <TextArea fx:id="player" maxHeight="100" maxWidth="100" text="Player's Hand" editable="false"/>
+            <TextArea fx:id="player" maxHeight="100" maxWidth="150" text="Player's Hand" editable="false"/>
             <!--                <ImageView fx:id="card1" preserveRatio="true">-->
             <!--                    <image>-->
             <!--                        <Image url="/Cards"/>-->

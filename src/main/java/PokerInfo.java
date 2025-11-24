@@ -10,7 +10,7 @@ class PokerInfo implements Serializable {
     private int pairPlusBet;
     private boolean playerFolded;
     private boolean dealerQualifies;
-    private int totalWinnings;
+    private int totalWinnings = 0;
     private int gameOver;
     private String gameState;
     private Deck deck;
@@ -84,6 +84,13 @@ class PokerInfo implements Serializable {
 
     public ArrayList<Cards> getHand(){
         return deck.add3CardsFromDeck();
+    }
+
+    public int getTotalWinnings() {
+        return totalWinnings;
+    }
+    public void addToTotalWinnings(int totalWinnings) {
+        this.totalWinnings += totalWinnings;
     }
 
     public String getMessage() { return message; }

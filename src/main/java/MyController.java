@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 //import javafx.scene.image.Image;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class MyController implements Initializable{
@@ -50,6 +49,7 @@ public class MyController implements Initializable{
     private int anteBet = 0;
     private int PPBet = 0;
     private int change;
+    private String dealerHand;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -118,6 +118,9 @@ public class MyController implements Initializable{
     @FXML
     public void playHand() throws IOException{
         System.out.println("Playing Hand");
+        Dealer.setText(dealerHand);
+
+        //pause
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/result.fxml"));
         Parent root = loader.load();
@@ -128,6 +131,10 @@ public class MyController implements Initializable{
     @FXML
     public void fold() throws IOException{
         System.out.println("Folding");
+        Dealer.setText(dealerHand);
+
+
+        //pause
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/result.fxml"));
         Parent root = loader.load();
@@ -153,37 +160,62 @@ public class MyController implements Initializable{
             playHand.setDisable(false);
             fold.setDisable(false);
 
-            // 1. NEW DECK
-            pokerInfo.getNewDeck();
 
-            // 2. DEAL 3 CARDS TO PLAYER
-            ArrayList<Cards> newHand = pokerInfo.getHand();   // returns 3 cards
-            pokerInfo.setPlayerHand(newHand);
-
-            // 3. DISPLAY HAND
-            StringBuilder sb = new StringBuilder();
-            String displayVal;
-            for (Cards c : newHand) {
-                switch (c.getValue()) {
-                    case 11:
-                        displayVal = "Jack";
-                        break;
-                    case 12:
-                        displayVal = "Queen";
-                        break;
-                    case 13:
-                        displayVal = "King";
-                        break;
-                    case 14:
-                        displayVal = "Ace";
-                        break;
-                    default: displayVal = String.valueOf(c.getValue());
-                }
-
-                sb.append(displayVal).append(" of ").append(c.getSuit()).append("\n");
-            }
-
-            player.setText(sb.toString());
+//            pokerInfo.getNewDeck();
+//            ArrayList<Cards> newPHand = pokerInfo.getHand();   // returns 3 cards
+//            ArrayList<Cards> newDHand = pokerInfo.getHand();   // returns 3 cards
+//            pokerInfo.setPlayerHand(newPHand);
+//            pokerInfo.setDealerHand(newDHand);
+//
+//            // Build Player Hand
+//            StringBuilder sb = new StringBuilder();
+//            String displayVal;
+//            for (Cards c : newPHand) {
+//                switch (c.getValue()) {
+//                    case 11:
+//                        displayVal = "Jack";
+//                        break;
+//                    case 12:
+//                        displayVal = "Queen";
+//                        break;
+//                    case 13:
+//                        displayVal = "King";
+//                        break;
+//                    case 14:
+//                        displayVal = "Ace";
+//                        break;
+//                    default: displayVal = String.valueOf(c.getValue());
+//                }
+//
+//                sb.append(displayVal).append(" of ").append(c.getSuit()).append("\n");
+//            }
+//
+//            player.setText(sb.toString());
+//
+//            // Build Dealer Hand
+//            StringBuilder dealerSB = new StringBuilder();
+//            String displayDealVal;
+//            for (Cards c : newDHand) {
+//                switch (c.getValue()) {
+//                    case 11:
+//                        displayDealVal = "Jack";
+//                        break;
+//                    case 12:
+//                        displayDealVal = "Queen";
+//                        break;
+//                    case 13:
+//                        displayDealVal = "King";
+//                        break;
+//                    case 14:
+//                        displayDealVal = "Ace";
+//                        break;
+//                    default: displayDealVal = String.valueOf(c.getValue());
+//                }
+//
+//                dealerSB.append(displayDealVal).append(" of ").append(c.getSuit()).append("\n");
+//            }
+//            this.dealerHand = dealerSB.toString();
+//            //dont want the text to show till play hand but want Dealer's Hand to still display
 
         } catch (NumberFormatException e) {
             ante.setText("5");
@@ -243,7 +275,7 @@ public class MyController implements Initializable{
         Dealer.setText("Dealer's Hand");
         player.setText("Player's Hand");
 
-        gameInfo.setText("New Game Started.");
+        gameInfo.setText("New Round Started");
         rewards.setText("$0");
 
         playHand.setDisable(true);

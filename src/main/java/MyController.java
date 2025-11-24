@@ -16,23 +16,20 @@ import javafx.scene.control.Alert;
 public class MyController implements Initializable{
     @FXML
     BorderPane welcomePane;
-
     @FXML
     BorderPane gamePane;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    }
-
     @FXML
-    private Button connectToServer;
-
+    public Button connectToServer;
     @FXML
-    private Button start;
+    public Button startGameButton;
     @FXML
     TextField textFIP;
     @FXML
     TextField textFPortNum;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    }
 
     boolean connectionAttempt = true;
     Client clientConnection;
@@ -60,21 +57,26 @@ public class MyController implements Initializable{
                 return;
             }
 
+            connectionAttempt = false;
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/connectClient.fxml"));
+            Parent root = loader.load();
+            MyController controller = loader.getController();
             clientConnection = new Client(data ->{
                 Platform.runLater(()->{
                     textFPortNum.getText();
                 });
-            }
+            }, port
             );
-            clientConnection.start();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/game.fxml"));
-            MyController controller = loader.getController();
+
+//            System.out.println("client Connectioned");
             controller.clientConnection = clientConnection;
-
-            start.setDisable(false);
-            connectToServer.setText("Connected to server");
-            connectToServer.setDisable(true);
-
+            controller.clientConnection.start();
+//            System.out.println("client Connectioned 2");
+            controller.startGameButton.setDisable(false);
+            controller.connectToServer.setText("Connected to server");
+            controller.connectToServer.setDisable(true);
+//            System.out.println("client Connectioned 3");
+            welcomePane.getScene().setRoot(root);
         }
         else{
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -93,7 +95,7 @@ public class MyController implements Initializable{
 //    }
     @FXML
     public void startGame() throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/game.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/game.fxml"));
         Parent root = loader.load();
         MyController controller = loader.getController();
         welcomePane.getScene().setRoot(root);
@@ -103,7 +105,7 @@ public class MyController implements Initializable{
     public void playHand() throws IOException{
         System.out.println("Playing Hand");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/result.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/result.fxml"));
         Parent root = loader.load();
         MyController controller = loader.getController();
         gamePane.getScene().setRoot(root);
@@ -113,7 +115,7 @@ public class MyController implements Initializable{
     public void fold() throws IOException{
         System.out.println("Folding");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/result.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXML/result.fxml"));
         Parent root = loader.load();
         MyController controller = loader.getController();
         gamePane.getScene().setRoot(root);

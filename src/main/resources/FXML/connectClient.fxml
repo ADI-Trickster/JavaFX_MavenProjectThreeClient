@@ -32,7 +32,7 @@
             <padding>
                 <Insets top="0" right="0" bottom="20" left="0"/>
             </padding>
-            <Button fx:id="start" text="Start Game" disable="true" onAction="#startGame"/>
+            <Button fx:id="startGameButton" text="Start Game" disable="true" onAction="#startGame"/>
         </HBox>
     </bottom>
 </BorderPane>

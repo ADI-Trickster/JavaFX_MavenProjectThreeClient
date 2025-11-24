@@ -11,14 +11,16 @@ public class Client extends Thread{
     ObjectInputStream in;
 
     private Consumer<Serializable> callback;
+    int port;
 
-    Client(Consumer<Serializable> call){
+    Client(Consumer<Serializable> call, int portNum){
         callback = call;
+        port = portNum;
     }
 
     public void run() {
         try {
-            socketClient= new Socket("127.0.0.1",5555);
+            socketClient= new Socket("127.0.0.1", port);
             out = new ObjectOutputStream(socketClient.getOutputStream());
             in = new ObjectInputStream(socketClient.getInputStream());
             socketClient.setTcpNoDelay(true);

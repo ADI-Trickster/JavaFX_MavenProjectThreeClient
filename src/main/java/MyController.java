@@ -8,19 +8,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.Alert;
 //import javafx.scene.image.Image;
 
 public class MyController implements Initializable{
-
     @FXML
     BorderPane welcomePane;
 
     @FXML
     BorderPane gamePane;
-
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -31,15 +29,52 @@ public class MyController implements Initializable{
 
     @FXML
     private Button start;
+    @FXML
+    TextField textFIP;
+    @FXML
+    TextField textFPortNum;
 
     boolean connectionAttempt = true;
+    Client clientConnection;
 
     @FXML
     public void connectToServerMethod() throws IOException{
         if(connectionAttempt){
+            String IP = textFIP.getText();
+            String portStr = textFPortNum.getText();
+            if(IP.isEmpty() || portStr.isEmpty()){
+                System.out.println("NO port or IP");
+                return;
+            }
+
+            int port;
+            try{
+                port = Integer.parseInt(portStr);
+                if(port < 1 || port > 65535){
+                    System.out.println("Invalid port");
+                    return;
+                }
+            }
+            catch (Exception e) {
+                System.out.println("Invalid port or IP");
+                return;
+            }
+
+            clientConnection = new Client(data ->{
+                Platform.runLater(()->{
+                    textFPortNum.getText();
+                });
+            }
+            );
+            clientConnection.start();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/FXML/game.fxml"));
+            MyController controller = loader.getController();
+            controller.clientConnection = clientConnection;
+
             start.setDisable(false);
             connectToServer.setText("Connected to server");
             connectToServer.setDisable(true);
+
         }
         else{
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

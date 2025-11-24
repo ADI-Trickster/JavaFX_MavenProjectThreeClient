@@ -24,8 +24,8 @@
                 </menus>
             </MenuBar>
             <HBox>
-                <TextArea maxHeight="100" maxWidth="100" text="Dealer's Hand"/>
-                <TextArea maxHeight="100" maxWidth="100" text="GAME INFO"/>
+                <TextArea maxHeight="100" maxWidth="100" text="Dealer's Hand" editable="false"/>
+                <TextArea maxHeight="100" maxWidth="100" text="GAME INFO" editable="false"/>
 <!--                <ImageView fx:id="card1" preserveRatio="true">-->
 <!--                    <image>-->
 <!--                        <Image url="/Cards"/>-->

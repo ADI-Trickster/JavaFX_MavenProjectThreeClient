@@ -177,9 +177,32 @@ public class MyController implements Initializable{
             playHand.setDisable(false);
             fold.setDisable(false);
 
-            // 2. DEAL 3 CARDS TO PLAYER
-            ArrayList<Cards> newHand = pokerInfo.getHand();   // returns 3 cards
-            pokerInfo.setPlayerHand(newHand);
+            ArrayList<Cards> playerHand = pokerInfo.getPlayerHand();
+            StringBuilder playerHandString = new StringBuilder();
+            String displayValPlayer;
+            for (Cards c : playerHand) {
+                switch (c.getValue()) {
+                    case 11:
+                        displayValPlayer = "Jack";
+                        break;
+                    case 12:
+                        displayValPlayer = "Queen";
+                        break;
+                    case 13:
+                        displayValPlayer = "King";
+                        break;
+                    case 14:
+                        displayValPlayer = "Ace";
+                        break;
+                    default: displayValPlayer = String.valueOf(c.getValue());
+                }
+
+                playerHandString.append(displayValPlayer).append(" of ").append(c.getSuit()).append("\n");
+            }
+
+            player.setText(playerHandString.toString());
+
+
 
 //            pokerInfo.getNewDeck();
 //            ArrayList<Cards> newPHand = pokerInfo.getHand();   // returns 3 cards

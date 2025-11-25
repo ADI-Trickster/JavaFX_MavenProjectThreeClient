@@ -1,13 +1,17 @@
 @font-face {
-    font-family: "Sriracha";
-    src: url('/AddOn/Sriracha-Regular.ttf');
+    font-family: "Ariel";
 }
 
 .border-pane {
     -fx-background-image: url("/AddOn/background1.jpg");
     -fx-background-size: 100% 100%;
     -fx-background-repeat: no-repeat;
-    -fx-font-family: "Sriracha";
+    -fx-font-family: "Ariel";
+}
+
+.label {
+   -fx-background-color: orange;
+   -fx-padding: 5px 10px;
 }
 
 #PIP{
@@ -21,7 +25,8 @@
 .button{
     -fx-min-width: 100px;
     -fx-min-height: 35px;
-    -fx-background-color: gold;
+    -fx-background-color: orange;
+    -fx-text-fill: black;
 }
 
 .textF{

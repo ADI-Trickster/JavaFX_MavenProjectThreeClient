@@ -10,6 +10,11 @@
     -fx-font-family: "Sriracha";
 }
 
+.label {
+   -fx-background-color: gold;
+   -fx-padding: 5px 10px;
+}
+
 #PIP{
     -fx-padding: 10px;
 }

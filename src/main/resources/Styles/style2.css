@@ -1,13 +1,12 @@
 @font-face {
-    font-family: "Sriracha";
-    src: url('/AddOn/Sriracha-Regular.ttf');
+    font-family: "Brush Script MT";
 }
 
 .border-pane {
     -fx-background-image: url("/AddOn/background2.jpeg");
     -fx-background-size: 100% 100%;
-    -fx-background-repeat: no-repeat;
-    -fx-font-family: "Sriracha";
+    -fx-background-repeat: no-repeat
+    -fx-font-family: "Brush Script MT";
 }
 
 #PIP{
@@ -18,10 +17,17 @@
     -fx-font-size: 35px;
 }
 
+.label {
+   -fx-background-color: black;
+   -fx-padding: 5px 10px;
+   -fx-text-fill: white;
+}
+
 .button{
     -fx-min-width: 100px;
     -fx-min-height: 35px;
-    -fx-background-color: gold;
+    -fx-background-color: black;
+    -fx-text-fill: white;
 }
 
 .textF{
